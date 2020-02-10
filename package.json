@@ -1,0 +1,45 @@
+{
+  "name": "invite-users",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Service to invite users.",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint 'src/**/*.js'",
+    "lint:format": "npm run lint -- --fix",
+    "sls:debug": "serverless print"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upstandfm/invite-users.git"
+  },
+  "author": "Daniël Illouz <daniel.illouz@me.com> (https://www.danillouz.dev/)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/upstandfm/invite-users/issues"
+  },
+  "homepage": "https://github.com/upstandfm/invite-users#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,md}": "npm run lint:format"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.0",
+    "jest": "^25.1.0",
+    "jest-junit": "^10.0.0",
+    "lint-staged": "^10.0.2",
+    "prettier": "^1.19.1",
+    "serverless": "^1.61.3"
+  },
+  "dependencies": {
+    "auth0": "^2.22.0",
+    "aws-sdk": "^2.613.0"
+  }
+}
