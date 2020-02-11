@@ -18,6 +18,10 @@ provider:
     # For more info see:
     # https://github.com/aws/aws-sdk-js/blob/master/CHANGELOG.md#24630
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    AUTH0_DOMAIN: ${secrets:AUTH0_DOMAIN}
+    AUTH0_INVITE_USERS_CLIENT_ID: ${secrets:AUTH0_INVITE_USERS_CLIENT_ID}
+    AUTH0_INVITE_USERS_CLIENT_SECRET: ${secrets:AUTH0_INVITE_USERS_CLIENT_SECRET}
+    AUTH0_APP_CLIENT_ID: ${secrets:AUTH0_APP_CLIENT_ID}
 
 package:
   exclude:
@@ -28,3 +32,16 @@ package:
     - src
 
 functions:
+  inviteUser:
+    handler: src/handlers.inviteUser
+    description: Invite a single user
+    events:
+      - sqs:
+          # This is a FIFO Queue
+          arn: ${state:infra.userInvitesQueueArn}
+          # Sets the max ammount of messages (i.e. batch) that will be sent
+          # (per Lambda trigger) to 1
+          # Because a batch succeeds or fails together, we prevent re-inviting
+          # users (that were already successfully processed in a batch), when a
+          # message in said batch leads to an error
+          batchSize: 1
