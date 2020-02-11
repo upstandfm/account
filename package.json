@@ -42,6 +42,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.0",
     "auth0": "^2.22.0",
-    "aws-sdk": "^2.613.0"
+    "aws-sdk": "^2.613.0",
+    "generate-password": "^1.5.1"
   }
 }
