@@ -5,6 +5,7 @@
   "description": "Service to invite users.",
   "scripts": {
     "test": "jest",
+    "tdd": "npm run test -- --watch",
     "lint": "eslint 'src/**/*.js'",
     "lint:format": "npm run lint -- --fix",
     "sls:debug": "serverless print"
@@ -39,6 +40,7 @@
     "serverless": "^1.61.3"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.0",
     "auth0": "^2.22.0",
     "aws-sdk": "^2.613.0"
   }
