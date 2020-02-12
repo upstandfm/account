@@ -19,7 +19,7 @@ module.exports = {
 
     const record = schema.validateRecord(eventRecord);
     const body = parseRecordBody(record.body);
-    const userInfo = schema.validateUserInfo(body);
-    return service.createInvite(userInfo);
+    const user = schema.validateUser(body);
+    return service.createInvite(user);
   }
 };

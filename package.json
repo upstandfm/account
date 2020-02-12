@@ -1,8 +1,8 @@
 {
-  "name": "invite-users",
+  "name": "account",
   "version": "1.0.0",
   "private": true,
-  "description": "Service to invite users.",
+  "description": "Account service.",
   "scripts": {
     "test": "jest",
     "tdd": "npm run test -- --watch",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/upstandfm/invite-users.git"
+    "url": "git+https://github.com/upstandfm/account.git"
   },
   "author": "Daniël Illouz <daniel.illouz@me.com> (https://www.danillouz.dev/)",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/upstandfm/invite-users/issues"
+    "url": "https://github.com/upstandfm/account/issues"
   },
-  "homepage": "https://github.com/upstandfm/invite-users#readme",
+  "homepage": "https://github.com/upstandfm/account#readme",
   "lint-staged": {
     "src/**/*.{js,json,md}": "npm run lint:format"
   },

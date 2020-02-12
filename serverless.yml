@@ -1,6 +1,6 @@
 org: upstandfm
 app: api
-service: invite-users
+service: account
 
 provider:
   name: aws
@@ -19,8 +19,8 @@ provider:
     # https://github.com/aws/aws-sdk-js/blob/master/CHANGELOG.md#24630
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     AUTH0_DOMAIN: ${secrets:AUTH0_DOMAIN}
-    AUTH0_INVITE_USERS_CLIENT_ID: ${secrets:AUTH0_INVITE_USERS_CLIENT_ID}
-    AUTH0_INVITE_USERS_CLIENT_SECRET: ${secrets:AUTH0_INVITE_USERS_CLIENT_SECRET}
+    AUTH0_ACCOUNT_CLIENT_ID: ${secrets:AUTH0_ACCOUNT_CLIENT_ID}
+    AUTH0_ACCOUNT_CLIENT_SECRET: ${secrets:AUTH0_ACCOUNT_CLIENT_SECRET}
     AUTH0_APP_CLIENT_ID: ${secrets:AUTH0_APP_CLIENT_ID}
 
 package:
@@ -34,7 +34,7 @@ package:
 functions:
   inviteUser:
     handler: src/handlers.inviteUser
-    description: Invite a single user
+    description: SQS FIFO worker that invites a single user
     events:
       - sqs:
           # This is a FIFO Queue

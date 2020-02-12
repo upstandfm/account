@@ -23,7 +23,7 @@ module.exports = {
    * Capture errors by sending them to Serverless Dashboard.
    *
    * Captured errors can be found here:
-   * https://dashboard.serverless.com/tenants/upstandfm/applications/api/services/invite-users/stage/prod/region/eu-central-1#service-overview=alerts
+   * https://dashboard.serverless.com/tenants/upstandfm/applications/api/services/account/stage/prod/region/eu-central-1#service-overview=alerts
    *
    * @param {Object} context - AWS Lambda context
    * @param {Object} err - Error

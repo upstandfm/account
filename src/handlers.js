@@ -7,8 +7,8 @@ const { captureError } = require('./utils');
 
 const {
   AUTH0_DOMAIN,
-  AUTH0_INVITE_USERS_CLIENT_ID,
-  AUTH0_INVITE_USERS_CLIENT_SECRET,
+  AUTH0_ACCOUNT_CLIENT_ID,
+  AUTH0_ACCOUNT_CLIENT_SECRET,
   AUTH0_APP_CLIENT_ID
 } = process.env;
 
@@ -24,8 +24,8 @@ const {
  */
 const managementClient = new auth0.ManagementClient({
   domain: AUTH0_DOMAIN,
-  clientId: AUTH0_INVITE_USERS_CLIENT_ID,
-  clientSecret: AUTH0_INVITE_USERS_CLIENT_SECRET
+  clientId: AUTH0_ACCOUNT_CLIENT_ID,
+  clientSecret: AUTH0_ACCOUNT_CLIENT_SECRET
 });
 
 /**

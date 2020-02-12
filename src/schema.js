@@ -30,7 +30,7 @@ const _SqsMsgSchema = defaultJoi.object().keys({
   awsRegion: Joi.string().required()
 });
 
-const _UserInfoSchema = defaultJoi.object().keys({
+const _UserSchema = defaultJoi.object().keys({
   id: Joi.string().required(),
   createdBy: Joi.string().required(),
   createdAt: Joi.string().required(),
@@ -58,7 +58,7 @@ module.exports = {
     return _validate(data, _SqsMsgSchema);
   },
 
-  validateUserInfo(data = {}) {
-    return _validate(data, _UserInfoSchema);
+  validateUser(data = {}) {
+    return _validate(data, _UserSchema);
   }
 };

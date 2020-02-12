@@ -1,8 +1,10 @@
-# Invite users
+# Account
 
-[![CircleCI](https://circleci.com/gh/upstandfm/invite-users.svg?style=svg)](https://circleci.com/gh/upstandfm/invite-users)
+[![CircleCI](https://circleci.com/gh/upstandfm/account.svg?style=svg)](https://circleci.com/gh/upstandfm/account)
 
-Service to invite users.
+Account service.
+
+This service contains a collection of Lambda integrations and triggers to manage user accounts.
 
 ## Table of contents
 
