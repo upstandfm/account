@@ -2,7 +2,7 @@
 
 const auth0 = require('auth0');
 const createAuth0Service = require('./auth0-service');
-const workers = require('./workers');
+const createInviteService = require('./invite-service');
 const { captureError } = require('./utils');
 
 const {
@@ -42,15 +42,16 @@ const authClient = new auth0.AuthenticationClient({
 });
 
 const auth0Service = createAuth0Service(managementClient, authClient);
+const inviteService = createInviteService(auth0Service);
 
 /**
- * Lambda SQS FIFO queue trigger that invites a single user.
+ * Lambda SNS topic subscriber that invites a single user.
  *
- * @param {Object} event - SQS message event (FIFO Queue)
+ * @param {Object} event - SNS message event
  * @param {Object} context - AWS lambda context
  *
- * For more info on SQS message see:
- * https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
+ * For more info on SNS message see:
+ * https://docs.aws.amazon.com/lambda/latest/dg/with-sns.html
  *
  * For more info on AWS lambda context see:
  * https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html
@@ -58,21 +59,8 @@ const auth0Service = createAuth0Service(managementClient, authClient);
  */
 module.exports.inviteUser = async (event, context) => {
   try {
-    // This Lambda trigger always receives a batch of 1 record
-    //
-    // For more info about the structure of the data see:
-    // https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html
-    const [eventRecord] = event.Records;
-    await workers.inviteUser(auth0Service, eventRecord);
+    await inviteService.send(event);
   } catch (err) {
-    // For now, when there's something wrong with the message, or if inviting
-    // the user fails, we don't let SQS re-process this message
-    //
-    // Effectively this means a new event must be sent by a client to try again
-    //
-    // For example, if an "inviter" adds a new member from the app, and the
-    // "invitee" never gets an invite. The "inviter" will have to delete the
-    // added member, and try again.
     captureError(context, err);
   }
 };
