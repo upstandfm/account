@@ -2,17 +2,17 @@
 
 module.exports = {
   /**
-   * Parse the body of an SQS event record.
+   * Parse a JSON message string.
    *
-   * @param {String} body - JSON string
+   * @param {String} msg - JSON string
    *
    * @return {Object} Parsed message
    */
-  parseRecordBody(body) {
+  parseMessage(msg) {
     try {
-      return JSON.parse(body);
+      return JSON.parse(msg);
     } catch (err) {
-      const parseErr = new Error('Message body contains invalid JSON');
+      const parseErr = new Error('Message contains invalid JSON');
       parseErr.name = 'ParseError';
       parseErr.details = err.message;
       throw parseErr;
