@@ -31,7 +31,7 @@ module.exports = function createInviteService(authService) {
       const record = schema.validateRecord(eventRecord);
       const msg = parseMessage(record.Sns.Message);
       const invite = schema.validateInvite(msg);
-      return authService.sendInvite(invite);
+      return authService.createUserInvite(invite);
     }
   };
 };

@@ -22,7 +22,7 @@ describe('Invite service', () => {
   describe('inviteService.send(event)', () => {
     it('throws with invalid event record', () => {
       const fakeAuthService = {
-        sendInvite: () => Promise.resolve()
+        createUserInvite: () => Promise.resolve()
       };
       const inviteService = createInviteService(fakeAuthService);
 
@@ -33,7 +33,7 @@ describe('Invite service', () => {
 
     it('throws with malformed event record message', () => {
       const fakeAuthService = {
-        sendInvite: () => Promise.resolve()
+        createUserInvite: () => Promise.resolve()
       };
       const inviteService = createInviteService(fakeAuthService);
 
@@ -44,7 +44,7 @@ describe('Invite service', () => {
 
     it('throws with invalid event record message', () => {
       const fakeAuthService = {
-        sendInvite: () => Promise.resolve()
+        createUserInvite: () => Promise.resolve()
       };
       const inviteService = createInviteService(fakeAuthService);
 
@@ -55,12 +55,12 @@ describe('Invite service', () => {
 
     it('invites user for valid event record', async () => {
       const fakeAuthService = {
-        sendInvite: jest.fn(() => Promise.resolve())
+        createUserInvite: jest.fn(() => Promise.resolve())
       };
       const inviteService = createInviteService(fakeAuthService);
       await inviteService.send(fakeEvents.newInvite);
 
-      expect(fakeAuthService.sendInvite.mock.calls.length).toBe(1);
+      expect(fakeAuthService.createUserInvite.mock.calls.length).toBe(1);
     });
   });
 });
