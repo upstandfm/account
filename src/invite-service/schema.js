@@ -29,7 +29,7 @@ const _SnsMsgSchema = defaultJoi.object().keys({
     Type: Joi.string().required(),
     UnsubscribeUrl: Joi.string().required(),
     TopicArn: Joi.string().required(),
-    Subject: Joi.string().required()
+    Subject: Joi.string().allow(null)
   })
 });
 
