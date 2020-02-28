@@ -57,12 +57,11 @@ module.exports = function createAuth0Service(managementClient, authClient) {
         // sets a new password
         verify_email: false,
 
-        // Auth0 requires us to provide a password, so we create a random one, and
-        // will reset it immediately after the user has been created
+        // Auth0 requires us to provide a password, so we create a random one,
+        // and will reset it immediately after the user has been created
         password: generatePassword(),
 
         email: invite.email,
-        // name: '',
         app_metadata: {
           workspaceId: invite.workspaceId,
           invitedBy: invite.createdBy,
@@ -74,7 +73,7 @@ module.exports = function createAuth0Service(managementClient, authClient) {
           // Note that these props are ephemeral, and are unset with a custom
           // Auth0 rule, after the invited user logs in for the first time
           isUserInvite: true,
-          inviteMsg: `${invite.inviterFullName} invited you to Upstand FM!`
+          inviteMsg: `${invite.inviterFullName} invited you!`
         }
       };
 
