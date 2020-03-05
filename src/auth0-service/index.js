@@ -61,7 +61,7 @@ module.exports = function createAuth0Service(managementClient, authClient) {
         // and will reset it immediately after the user has been created
         password: generatePassword(),
 
-        user: 'User',
+        name: 'User',
         email: invite.email,
         app_metadata: {
           workspaceId: invite.workspaceId,
